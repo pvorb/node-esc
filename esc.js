@@ -3,7 +3,9 @@ var append = require('append'),
     path = require('path');
 
 module.exports = function(str, opt) {
-	if (typeof str !== 'string')
+	if (typeof str == 'undefined')
+		str = '';
+	if (typeof str != 'string')
 		str = str.toString();
 
 	// default options

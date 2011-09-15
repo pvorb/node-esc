@@ -8,3 +8,5 @@ fs.writeFileSync('test-1.html', esc(html, { 'uri': 'http://example.com' }));
 fs.writeFileSync('test-2.html', esc(html, { 'uri': 'http://example.com/' }));
 
 fs.writeFileSync('test-3.html', esc(html, { 'uri': 'http://example.com/dir/doc.html' }));
+
+esc(undefined);
