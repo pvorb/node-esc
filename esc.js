@@ -33,8 +33,8 @@ module.exports = function(str, opt) {
       // If the URL hasn't got a protocol and doesn't start with '//'
       if (typeof protocol == 'undefined' && value[1] != '/')
         // If the URL is absolute
-	if (value[0] == '/')
-	  return key+'="'+host+value+'"';
+      if (value[0] == '/')
+        return key+'="'+host+value+'"';
       // If the URL is a hash tag
       else if (value[0] == '#')
         return key+'="'+all+value+'"';
