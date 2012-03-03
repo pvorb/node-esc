@@ -24,24 +24,28 @@ module.exports = function(str, opt) {
     var dir = path.dirname(uri.pathname)+'/';
     var all = opt.uri;
 
-    //             attr        (protocol:? // host)|document
+    //             attr        (protocol:? // host)  |document
     var pattern = /(href|src)="(([^:"]+:)?\/\/[^"]+|[^"]+)"/gi;
 
     // Add 'http://foo.bar/' to URLs
     str = str.replace(pattern,
-        function(match, key, value, protocol, offset, string) {
-      // If the URL hasn't got a protocol and doesn't start with '//'
-      if (typeof protocol == 'undefined' && value[1] != '/')
+        function(match, key, value, protocol, offset,
+          string) {
+      // If the URI has got a protocol or does start with //, don't replace
+      // anything
+      if (protocol || value[1] == '/')
+        return match;
+      // otherwise replace
+      else
         // If the URL is absolute
-      if (value[0] == '/')
-        return key+'="'+host+value+'"';
-      // If the URL is a hash tag
-      else if (value[0] == '#')
-        return key+'="'+all+value+'"';
-      // If the URL is relative
-      else {
-        return key+'="'+host+path.normalize(dir+value)+'"';
-      }
+        if (value[0] == '/')
+          return key+'="'+host+value+'"';
+        // If the URL is a hash tag
+        else if (value[0] == '#')
+          return key+'="'+all+value+'"';
+        // If the URL is relative
+        else
+          return key+'="'+host+path.normalize(dir+value)+'"';
     });
   }
 

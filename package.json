@@ -13,6 +13,6 @@
   },
   "tags": [ "html", "escape" ],
   "dependencies": {
-    "append": ">=0.1.0"
+    "append": ">=0.1.1"
   }
 }
