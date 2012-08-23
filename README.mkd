@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/pvorb/node-esc.png)](http://travis-ci.org/pvorb/node-esc)
 **esc** allows you to quickly escape HTML strings. It is capable of
 automatically extending URLs in the HTML for use in feeds.
 
